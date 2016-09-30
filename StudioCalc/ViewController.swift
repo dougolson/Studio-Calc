@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     var bpm = 0.0
     var noteVals = [1,2,4,8,16,32]
     let noteDefaultColor = UIColor(red: 176/255, green: 228/255, blue: 145/255, alpha: 0.8)
-    let noteClickedColor = UIColor(red: 176/255, green: 228/255, blue: 145/255, alpha: 0.2)
+    let noteClickedColor = UIColor(red: 176/255, green: 228/255, blue: 145/255, alpha: 0.0)
     
 
     @IBOutlet weak var bpmResult: UILabel!
@@ -34,22 +34,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-//    @IBAction func reset(_ sender: UIButton) {
-//        time = 0.0
-//        timeArr = [Double]()
-//        count = 0
-//        timeDiff = 0.0
-//        bpm = 0.0
-//        bpmResult.text = "Tempo = 0 B.P.M"
-//        delayResult.text = "Delay"
-//        hzResult.text = "Hz"
-//        for var i in noteVals {
-//            if let button = self.view.viewWithTag(i) as? UIButton {
-//                button.backgroundColor = noteDefaultColor
-//            }
-//        }
-//    }
     
     func resetState() {
         time = 0.0
@@ -57,7 +41,7 @@ class ViewController: UIViewController {
         count = 0
         timeDiff = 0.0
         bpm = 0.0
-        bpmResult.text = "Tempo = 0 B.P.M"
+        bpmResult.text = "Tempo"
         delayResult.text = "Delay"
         hzResult.text = "Hz"
         for var i in noteVals {
@@ -71,7 +55,7 @@ class ViewController: UIViewController {
         
         time = CACurrentMediaTime() // get device time
         timeArr.append(time) // array of time values
-        
+        print(count)
         switch count{
             case 0:
                 timeDiff = 0.0
@@ -79,13 +63,14 @@ class ViewController: UIViewController {
                 timeDiff = 0.0
             default:
                 timeDiff = timeArr[timeArr.count - 1] - timeArr[0]
-                bpm = round(10 * 60 * Double(count - 1) / timeDiff) / 10
+                bpm = round(10 * 60 * Double(count) / timeDiff) / 10
                 if (timeArr[timeArr.count - 1] - timeArr[timeArr.count - 2]) > 2 {
                     resetState()
+                    return
                 }
             }
         
-        bpmResult.text = "Tempo = \(bpm) B.P.M"
+        bpmResult.text = "\(bpm) B.P.M"
         
         count += 1
 
