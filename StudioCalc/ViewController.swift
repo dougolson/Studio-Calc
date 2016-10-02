@@ -31,20 +31,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-//        switch count {
-//        case 0:
-//            break
-//        case 1:
-//            break
-//        default:
-//            self.timer = Timer.scheduledTimer(timeInterval: timeMean, target: self,  selector: #selector(ViewController.Tick), userInfo: nil, repeats: true)
-//        }
     }
-        // Do any additional setup after loading the view, typically from a nib.
-
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,7 +55,7 @@ class ViewController: UIViewController {
                 button.backgroundColor = noteDefaultColor
             }
         }
-//        self.timer.invalidate()
+
         view.layer.removeAllAnimations()
 
     }
@@ -91,7 +79,7 @@ class ViewController: UIViewController {
                     return
                 }
                 bpmResult.text = "\(bpm) B.P.M"
-                screenFlashTimer()
+                screenFlashClick()
             }
         count += 1
     }
@@ -120,45 +108,21 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    
-    
-    // Click start/stop
-    
-//    @IBAction func clickStart(_ sender: UIButton) {
-//        if timeMean > 0.1 {
-//            switch clickOn {
-//            case true:
-//                self.timer = Timer.scheduledTimer(timeInterval: timeMean / 2.0, target: self,  selector: #selector(ViewController.screenFlashClick), userInfo: nil, repeats: true)
-//                clickOn = false
-//            case false:
-//                self.timer.invalidate()
-//                clickOn = true
-//            }
-//        }
-//    }
-    
-    
-    func screenFlashTimer() {
-        if timeMean > 0.1 {
-            screenFlashClick()
-//            self.timer = Timer.scheduledTimer(timeInterval: timeMean / 2.0, target: self,  selector: #selector(ViewController.screenFlashClick), userInfo: nil, repeats: true)
-        }
-    }
-    
-    var foo = 1
-    
+
     func screenFlashClick() {
         view.layer.removeAllAnimations()
-        UIView.animate(withDuration: timeMean, delay: 0, options: [.allowUserInteraction, .curveEaseInOut, .repeat], animations: {
-//            self.view.alpha = 0.6
-            self.view.backgroundColor = self.bgColorDark
-        }) { (true) in
-//            self.view.alpha = 1.0
-            self.view.backgroundColor = self.bgColor
-        }
+
+        if count % 6 == 0 {
+            UIView.animate(withDuration: timeMean, delay: 0, options: [.allowUserInteraction, .curveEaseInOut, .repeat], animations: {
+//                self.view.alpha = 0.75
+                self.view.backgroundColor = self.bgColorDark
+            }) { (true) in
+//                self.view.alpha = 1.0
+                self.view.backgroundColor = self.bgColor
+            }
 
     }
+}
     
 
     
