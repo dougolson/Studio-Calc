@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YM-Uk-d3Y">
@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="8vV-lS-MKB"/>
                                     <constraint firstAttribute="width" constant="130" id="DDZ-Pv-OOM"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="Unchecked Circle Filled-500"/>
+                                <state key="normal" backgroundImage="Circle500"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z5j-lj-zqP"/>
                                 </connections>
@@ -179,13 +179,34 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8q-MK-X8B">
+                                <color key="backgroundColor" red="0.69019607839999997" green="0.89411764709999997" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="55" id="cbE-I6-cvP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="Click">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="clickStart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DCx-hc-g9S"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.59427887751214237" green="0.80000000000000004" blue="0.74715790984385766" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.59607843137254901" green="0.80000000000000004" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="s8q-MK-X8B" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FsJ-Z3-PXn"/>
                             <constraint firstItem="6YM-Uk-d3Y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IRl-DL-AMS"/>
                             <constraint firstItem="6YM-Uk-d3Y" firstAttribute="top" secondItem="g7S-fr-oPc" secondAttribute="bottom" constant="15" id="LSg-L9-i48"/>
                             <constraint firstItem="6YM-Uk-d3Y" firstAttribute="leading" secondItem="WNk-aM-G7l" secondAttribute="trailing" constant="8" id="Sfi-tZ-MbH"/>
                             <constraint firstItem="g7S-fr-oPc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bCR-j1-gUw"/>
+                            <constraint firstItem="s8q-MK-X8B" firstAttribute="top" secondItem="ZiT-Gj-YyS" secondAttribute="bottom" constant="25" id="beW-at-fhL"/>
                             <constraint firstItem="ZiT-Gj-YyS" firstAttribute="top" secondItem="6YM-Uk-d3Y" secondAttribute="bottom" constant="18" id="bg4-To-9yP"/>
                             <constraint firstItem="g7S-fr-oPc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="dzE-Kj-2Tx"/>
                             <constraint firstItem="ZiT-Gj-YyS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gub-AD-jbo"/>
@@ -203,11 +224,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="328.125" y="11.25"/>
+            <point key="canvasLocation" x="327.19999999999999" y="11.244377811094454"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Unchecked Circle Filled-500" width="500" height="500"/>
+        <image name="Circle500" width="500" height="500"/>
         <image name="eighth" width="19" height="35"/>
         <image name="half" width="11" height="35"/>
         <image name="quarter" width="11" height="35"/>
