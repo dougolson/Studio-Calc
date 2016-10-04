@@ -17,11 +17,12 @@ class ViewController: UIViewController {
     var timeMean = 0.0
     var bpm = 0.0
     var noteVals = [1,2,4,8,16,32]
-    var clickOn = true
-    let noteDefaultColor = UIColor(red: 176/255, green: 228/255, blue: 145/255, alpha: 0.8)
+    var clickOn = false
+    let noteDefaultColor = UIColor(red: 176/255, green: 228/255, blue: 145/255, alpha: 0.75)
     let noteClickedColor = UIColor(red: 176/255, green: 228/255, blue: 145/255, alpha: 0.0)
     let bgColor = UIColor(red: 152/255, green: 204/255, blue: 191/255, alpha: 1.0)
-    let bgColorDark = UIColor(red: 102/255, green: 153/255, blue: 153/255, alpha: 1.0)
+    let bgColorDark = UIColor(red: 145/255, green: 175/255, blue: 183/255, alpha: 1.0)
+    
     
     var timer = Timer()
 
@@ -70,16 +71,25 @@ class ViewController: UIViewController {
                 timeDiff = 0.0
                 bpmResult.text = "..."
             default:
-                timeDiff = timeArr[timeArr.count - 1] - timeArr[0]
-                timeMean = timeDiff / Double(count)
-                bpm = round(10 * 60 * Double(count) / timeDiff) / 10
-                // reset after 2 seconds
-                if (timeArr[timeArr.count - 1] - timeArr[timeArr.count - 2]) > 2 {
+                if (timeArr[timeArr.count - 1] - timeArr[timeArr.count - 2]) < 1.5 && clickOn == false   {
+                    timeDiff = timeArr[timeArr.count - 1] - timeArr[0]
+                    timeMean = timeDiff / Double(count)
+                    bpm = round(10 * 60 * Double(count) / timeDiff) / 10
+                }
+                // startClick after 2 seconds if off
+                else if (timeArr[timeArr.count - 1] - timeArr[timeArr.count - 2]) >= 1.5 && clickOn == false   {
+                    screenFlashClick()
+                    clickOn = true
+                    }
+                // reset after 2 seconds if click is on
+                else if (timeArr[timeArr.count - 1] - timeArr[timeArr.count - 2]) >= 1.5 && clickOn == true
+                {
                     resetState()
+                    clickOn = false
                     return
                 }
                 bpmResult.text = "\(bpm) B.P.M"
-                screenFlashClick()
+
             }
         count += 1
     }
@@ -103,31 +113,23 @@ class ViewController: UIViewController {
                 button.backgroundColor = noteDefaultColor
             }
         }
-        if let button = self.view.viewWithTag(tag) as? UIButton {
-            button.backgroundColor = noteClickedColor
-        }
+            if let button = self.view.viewWithTag(tag) as? UIButton {
+                button.backgroundColor = noteClickedColor
+            }
     }
     
 
     func screenFlashClick() {
-        view.layer.removeAllAnimations()
-
-        if count % 6 == 0 {
+            view.layer.removeAllAnimations()
             UIView.animate(withDuration: timeMean, delay: 0, options: [.allowUserInteraction, .curveEaseInOut, .repeat], animations: {
-//                self.view.alpha = 0.75
                 self.view.backgroundColor = self.bgColorDark
             }) { (true) in
-//                self.view.alpha = 1.0
                 self.view.backgroundColor = self.bgColor
-            }
-
+        }
     }
-}
-    
-
     
     
-
+    
     
 }
     
